@@ -1,0 +1,107 @@
+{% load latest_title %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% include 'tdk_info.html' %}
+    <link rel="stylesheet" href="/static/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div>
+    <nav class="navbar navbar-default navbar-fixed-top" style="padding: 0 10%">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">区块链</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/">主页 <span class="sr-only">(current)</span></a></li>
+                    {% for category in categories %}
+                        <li><a href="/{{ category }}">{{ category }}</a></li>
+                    {% endfor %}
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/admin">Admin</a></li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+
+{% block lunbo %}{% endblock %}
+    <div class="main-content container-fluid col-md-offset-1 col-md-10" style="margin-top: 75px">
+        <div class="content-left col-md-8">
+
+            {% block main-content %}{% endblock %}
+
+        </div>
+        <div class="content-right col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">最新资讯</h3>
+                    </div>
+                    <ul class="list-group">
+                        {% for a in da %}
+                            {% ifequal a.post_category 1 %}
+
+                            <ul class="list-group"><a class="list-group-item"
+                                                       href="/人工智能/{{ a.id }}.html">{{ a.post_title }}</a>
+                            </ul>
+                            {% endifequal %}
+                            {% ifequal a.post_category 2 %}
+
+                            <ul class="list-group"><a class="article_view_block_title"
+                                                       href="/区块链/{{ a.id }}.html">{{ a.post_title }}</a>
+                            </ul>
+                            {% endifequal %}
+                            {% ifequal a.post_category 3 %}
+
+                            <ul class="list-group"><a class="article_view_block_title"
+                                                       href="/大数据/{{ a.id }}.html">{{ a.post_title }}</a>
+                            </ul>
+                            {% endifequal %}
+
+                        {% endfor %}}
+                    </ul>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">热门文章</h3>
+                    </div>
+                    <ul class="list-group">
+                        {% hot %}
+                    </ul>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">热门标签</h3>
+                    </div>
+                    <ul class="list-group">
+                        {% for a in tag %}
+                            <ul class="list-group"><a class="list-group-item"
+                                                       href="/{{ a.tag_name }}">{{ a.tag_name }}</a>
+                            
+                            
+                        {% endfor %}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% include 'footer.html' %}
+
+
+<script src="/static/jquery-2.1.1.js"></script>
+<script src="/static/bootstrap.min.js"></script>
+</body>
+</html>
