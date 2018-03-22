@@ -26,6 +26,8 @@ urlpatterns = [
     path('人工智能/', views.category),
     path('区块链/', views.category),
     path('大数据/', views.category),
+
+    path('tag/', views.tag),
 ]
 
 
