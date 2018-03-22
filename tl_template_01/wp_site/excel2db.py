@@ -55,8 +55,9 @@ def excel_table_byIndex(fileName, byIndex=0):
         l = [post_content,post_content]
         db_lists.append(l)
 
-
-
+        if models.WpPosts.objects.filter(post_content=post_content,post_title=post_title):pass
+        else:
+            models.WpPosts.objects.create(post_content=post_content,post_title=post_title)
     return (rows, db_lists)
 
 
