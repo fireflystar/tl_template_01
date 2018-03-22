@@ -33,7 +33,7 @@ def excel_table_byIndex(fileName, byIndex=0):
         pass
     finally:
         pass
-        
+
     table = data_excel.sheets()[byIndex]    #默认为第一个sheet
     # print(table.name)# exel表格中指定sheet的具体名字
 
@@ -42,7 +42,7 @@ def excel_table_byIndex(fileName, byIndex=0):
     rows = list()   #里面放很多个行
     db_lists = list()
     for row in range(1, nrows):#这里设置从sheet的第多少行开始获取数据
-        list_of_row = table.row_values(row)#m每一行的内容，放入一个列表中
+        list_of_row = table.row_values(row)#m每一行的全部字段，放入一个列表中
         # print(list_of_row)
         rows.append(list_of_row)
 
@@ -54,6 +54,8 @@ def excel_table_byIndex(fileName, byIndex=0):
         #发送到前端模板去看看都取得了什么数据
         l = [post_content,post_content]
         db_lists.append(l)
+
+
 
     return (rows, db_lists)
 
