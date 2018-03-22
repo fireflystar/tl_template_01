@@ -24,7 +24,7 @@ SECRET_KEY = 'q7)d@3zx#m@3#+*_6&ah^)&b(1^px1gmds_u%yawdtr#-*)8c+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.0.130', '127.0.0.1', '47.98.59.65','192.168.196.1']
+ALLOWED_HOSTS = ['192.168.0.130', '127.0.0.1', '47.98.59.65','192.168.196.1','192.168.196.137']
 
 admin_name = 'admin_tl'
 admin_pass = 'admin_tl'

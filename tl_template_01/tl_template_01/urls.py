@@ -26,11 +26,18 @@ urlpatterns = [
     path('人工智能/', views.category),
     path('区块链/', views.category),
     path('大数据/', views.category),
+]
 
 
-
+from wp_site import excel2db
+urlpatterns += [
+    path('excel2db', excel2db.transfer),
 
 ]
+
+
+
+
 for i in WpPosts.category:
     urlpatterns.append(path(i[1], views.category))
     urlpatterns.append(re_path(i[1] + '/(?P<aid>\d+)\.html', views.article))
