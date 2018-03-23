@@ -45,8 +45,14 @@ for i in WpPosts.category:
     urlpatterns.append(re_path(i[1] + '/(?P<aid>\d+)\.html', views.article))
     urlpatterns.append(re_path(i[1] + '/(?P<page>\d+)', views.article))
 
-# for i in Tag.tag_name:
-#     urlpatterns.append(path(i[1], views.category))
+tag_rows = Tag.objects.all()
+for row in tag_rows:
+    #print(row.tag_name)
+    urlpatterns.append(path(row.tag_name, views.category))
+
+
+#for i in Tag.tag_name:
+#    urlpatterns.append(path(i[1], views.category))
 
 
 
