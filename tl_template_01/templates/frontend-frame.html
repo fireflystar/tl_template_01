@@ -49,6 +49,11 @@
                     <div class="panel-heading">
                         <h3 class="panel-title">最新资讯</h3>
                     </div>
+                     <form action="/searchA/" method="post">
+                        <input type="text" name="wenzhang" value="" />
+                        <input type="submit"  value="模糊搜索标题或内容" />
+
+                     </form>
                     <ul class="list-group">
                         {% for a in da %}
                             {% ifequal a.post_category 1 %}

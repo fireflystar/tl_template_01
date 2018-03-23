@@ -27,6 +27,9 @@ urlpatterns = [
     path('区块链/', views.category),
     path('大数据/', views.category),
 
+
+    path('searchA/', views.searchA),
+
 ]
 
 
@@ -45,9 +48,13 @@ for i in WpPosts.category:
     urlpatterns.append(re_path(i[1] + '/(?P<page>\d+)', views.article))
 
 tag_rows = Tag.objects.all()
+l1 = []
 for row in tag_rows:
-    urlpatterns.append(path(row.tag_name, views.tag))
-
+    l1.append(row.tag_name)
+for i in l1:
+    urlpatterns.append(path(i, views.tag))
+    #urlpatterns.append(path(i'(?P<aid>i', views.tag))
+    
 
 #for i in Tag.tag_name:
 #    urlpatterns.append(path(i[1], views.category))

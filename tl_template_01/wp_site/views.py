@@ -152,3 +152,7 @@ def article(request, aid):
                    'page': page,
                    'pages': range(pages),
                    })
+
+
+def searchA(request):
+    return HttpResponse("this is searchA")
