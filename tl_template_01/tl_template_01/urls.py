@@ -27,7 +27,6 @@ urlpatterns = [
     path('区块链/', views.category),
     path('大数据/', views.category),
 
-    path('tag/', views.tag),
 ]
 
 
@@ -47,8 +46,7 @@ for i in WpPosts.category:
 
 tag_rows = Tag.objects.all()
 for row in tag_rows:
-    #print(row.tag_name)
-    urlpatterns.append(path(row.tag_name, views.category))
+    urlpatterns.append(path(row.tag_name, views.tag))
 
 
 #for i in Tag.tag_name:
