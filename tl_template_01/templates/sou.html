@@ -8,7 +8,9 @@
             {% set_anchor article.post_content %}
             <div class="prev-next-nav">
                 {%for row in queryList %}
-                    {{row.post_title}}<br>
+                    <h3>{{row.post_title}}</h3><br>
+                    {{row.post_content}}<br>
+
                 {%endfor%}
             </div>
         </div>

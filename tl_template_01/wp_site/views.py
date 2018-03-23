@@ -164,8 +164,11 @@ def searchA(request):
 		Q(post_content__icontains=wenstr)
 		))
         print(len(queryList))
+        tag = Tag.objects.exclude(tag_name='没有')
+        tag = list(tag)
         return render(request,'sou.html',{
-             "queryList":queryList
+             "queryList":queryList,
+             "tag":tag
     })
 
 
