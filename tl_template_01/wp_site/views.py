@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Q
 from django.shortcuts import render, HttpResponse
 from django.utils import timezone
 
@@ -155,4 +156,19 @@ def article(request, aid):
 
 
 def searchA(request):
-    return HttpResponse("this is searchA")
+    if request.method == "POST":
+        wenstr = request.POST.get("wenzhang",None).strip()
+        #print(wenstr)
+        queryList = WpPosts.objects.filter((
+		Q(post_title__icontains=wenstr) |
+		Q(post_content__icontains=wenstr)
+		))
+        print(len(queryList))
+        return render(request,'sou.html',{
+             "queryList":queryList
+    })
+
+
+
+
+
