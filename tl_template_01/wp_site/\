@@ -87,12 +87,10 @@ def tag(request):
     if request.method == "GET":
         tag = request.path_info[1:]
         print(tag)
-        tagList = Tag.objects.all()    #文章列表
-        #for tag in tagList:print(tag.id,tag.tag_name)
-        l = [(tag.tag_name, tag.id) for tag in tagList]
-        d = dict(l)
-        print(d[tag])
-        return HttpResponse('tagviews.py')
+        wpList = WpPosts.objects.all()    #文章列表
+        tag_id_list = [wp.tag_id_id for wp in wpList]
+        for wp in wpList:print(wp.tag_id_id)
+    return render(request,"tag.html",{ "tag_id_list":tag_id_list })
 
 
 def article(request, aid):
