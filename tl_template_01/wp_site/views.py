@@ -92,7 +92,19 @@ def tag(request):
         l = [(tag.tag_name, tag.id) for tag in tagList]
         d = dict(l)
         print(d[tag])
-        return HttpResponse('tagviews.py')
+
+        wpList = WpPosts.objects.all()
+        for wp in wpList:
+            print(str(wp.tag_id))
+        resList = [wp for wp in wpList if str(d[tag]) in str(wp.tag_id)]
+
+        tag = Tag.objects.exclude(tag_name='没有')
+        tag = list(tag)
+        return render(request,'sou.html',{
+             "queryList":resList,
+             "tag":tag
+    })
+
 
 
 def article(request, aid):
