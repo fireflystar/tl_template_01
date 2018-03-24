@@ -51,6 +51,7 @@ tag_rows = Tag.objects.all()
 l1 = []
 for row in tag_rows:
     l1.append(row.tag_name)
+print(l1)
 for i in l1:
     urlpatterns.append(path(i, views.tag))
     #urlpatterns.append(path(i'(?P<aid>i', views.tag))

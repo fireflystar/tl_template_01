@@ -84,28 +84,10 @@ def category(request):
     })
 
 def tag(request):
-    data1 = WpPosts.objects.filter(tag_id=1).filter(is_enable=True)[::-1]
-    data2 = WpPosts.objects.filter(tag_id=2).filter(is_enable=True)[::-1]
-    data3 = WpPosts.objects.filter(tag_id=3).filter(is_enable=True)[::-1]
-    data4 = WpPosts.objects.filter(tag_id=4).filter(is_enable=True)[::-1]
-    data5 = WpPosts.objects.filter(tag_id=5).filter(is_enable=True)[::-1]
-    data = WpPosts.objects.filter(is_enable=True)[::-1]
-    count = WpPosts.objects.count()
-    da = WpPosts.objects.filter(post_date__lt=timezone.now()).filter(is_enable=True)[count - 8:][::-1]
-    tag = Tag.objects.exclude(tag_name='没有')
-    mytag = data3[0].tag_id_id
-    return render(request, 'tag.html', {
-        'data': data, 
-        'data1': data1,
-        'data2': data2,
-        'data3': data3,
-        'data4': data4,
-        'data5': data5,
-        'tdk': get_tdk(2),
-        'da': da,
-        'tag': tag,
-        'mytag': mytag
-    })
+    if request.method == "GET":
+        tag = request.path_info[1:]
+        #print(tag)
+    return HttpResponse('tag is %s' % tag)
 
 def article(request, aid):
     aid = int(aid)
