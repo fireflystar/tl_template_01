@@ -86,8 +86,11 @@ def category(request):
 def tag(request):
     if request.method == "GET":
         tag = request.path_info[1:]
-        #print(tag)
-    return HttpResponse('tag is %s' % tag)
+        print(tag)
+        wpList = WpPosts.objects.all()    #文章列表
+        tag_id_list = [wp.tag_id_id for wp in wpList]
+        #tag_name_list = [wp.tag_tag_name for wp in wpList]
+    return render(request,"tag.html",{ "tag_id_list":tag_id_list })
 
 def article(request, aid):
     aid = int(aid)

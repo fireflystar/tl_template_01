@@ -1,6 +1,11 @@
 {% extends 'frontend-frame.html' %}
 {% load anchor_text %}
 {% block main-content %}
+
+{% for tag_id in tag_id_list %}
+	{{tag_id}}
+{% endfor %}
+
     <div>
         <p>
         <h2 class="text-center">{{ article.post_title }}</h2></p>
