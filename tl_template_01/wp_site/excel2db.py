@@ -4,24 +4,7 @@ import xlrd#处理excel
 import os#拼凑excel文件的地址
 from . import models
 
-"""
-excel 表格 3-wp_posts.xlsx中，只有下面2个字段里有值
-准备搬运这2个字段的内容到数据中，并把搬运的内容显示到网页中
-post_title
-post_content
 
-
-需要些一个template html  ，准备渲染，并返回给用户  
-    创建 insert2db.html  
-需要修改urls.py的内容，新的文件中的处理函数要和 网址建立关联
-
-    from wp_site import excel2db
-    urlpatterns += [
-        path('excel2db', excel2db.transfer),
-
-    ]
-
-"""
 def excel_table_byIndex(fileName, byIndex=0):
     # 可以先发送到前端看看，并不直接往数据库中插入，当结果调整好了之后再插入到数据库
     data_excel = ''
@@ -64,8 +47,7 @@ def excel_table_byIndex(fileName, byIndex=0):
 
 def transfer(request):
     if request.method == "GET":
-        # os.path.dirname(os.path.realpath(__file__))#当前文件的所在的文件夹
-        # os.path.realpath(__file__)#当前文件的真实路径
+
 
         fileName = os.path.join(\
                 os.path.dirname(os.path.realpath(__file__)), '3-wp_posts.xlsx')
